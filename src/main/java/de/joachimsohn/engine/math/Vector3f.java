@@ -1,4 +1,4 @@
-package de.joachimsohn.math;
+package de.joachimsohn.engine.math;
 
 public class Vector3f {
     private float x;

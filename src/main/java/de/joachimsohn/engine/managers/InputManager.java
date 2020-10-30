@@ -1,4 +1,4 @@
-package de.joachimsohn.managers;
+package de.joachimsohn.engine.managers;
 
 import org.lwjgl.glfw.*;
 import org.lwjgl.system.Callback;

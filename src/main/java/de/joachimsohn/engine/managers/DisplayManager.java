@@ -1,6 +1,6 @@
-package de.joachimsohn.managers;
+package de.joachimsohn.engine.managers;
 
-import de.joachimsohn.math.Vector3f;
+import de.joachimsohn.engine.math.Vector3f;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.glfw.GLFWWindowSizeCallback;
@@ -18,15 +18,12 @@ public class DisplayManager {
     private boolean isResized;
     private boolean isFullscreen;
 
-
     private InputManager inputManager;
 
     private Vector3f background = new Vector3f(1f, 0f, 0f);
     private float backgroundalpha;
 
-    GLFWWindowSizeCallback windowSizeCallback;
-
-
+    private GLFWWindowSizeCallback windowSizeCallback;
 
     public DisplayManager(InputManager inputManager) {
         this.inputManager = inputManager;
@@ -112,7 +109,10 @@ public class DisplayManager {
     }
 
     public void closeWindow() {
+        inputManager.destroy();
+        windowSizeCallback.free();
         GLFW.glfwDestroyWindow(WINDOW);
+        GLFW.glfwTerminate();
     }
 
     public void setFullscreen(boolean fullscreen) {
